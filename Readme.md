@@ -8,6 +8,6 @@ Contributions: All contributions welcome.
 Playing with Strmmer:
 	- There are two parts to the project.
 	* Simple Streamer
-		- This portion contains the basic concept behind the project which is stream video over http securely.
+		- This portion contains the basic concept behind the project which is stream video over http.
 	* Strmmer
-		- This is an ongoing implementation of a much more secure approach with basic securities.
+		- This is an ongoing implementation of a much better approach.
