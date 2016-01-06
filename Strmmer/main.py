@@ -1,6 +1,6 @@
 # main.py
+from gevent.wsgi import WSGIServer
 from flask import Flask, render_template, stream_with_context, Response
-from camera import VideoCamera
 import base64
 
 app = Flask(__name__)
@@ -28,8 +28,9 @@ def video_feed():
 	who shouldn't view the video from viewing it. 
 	This could also have algos for managing expired streams.
 	"""
-	video = "videos/Snapchat-3166549212292376752.mp4"
+	video = "videos/snap-122203822.mp4"
 	return Response(stream_with_context(feedStream(video)))
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', debug=True, port=5001)
+	http_server = WSGIServer(('0.0.0.0', 5001), app)
+	http_server.serve_forever()
