@@ -1,7 +1,6 @@
 # main.py
 from gevent.wsgi import WSGIServer
 from flask import Flask, render_template, stream_with_context, Response
-import base64
 
 app = Flask(__name__)
 
@@ -9,17 +8,18 @@ app = Flask(__name__)
 def index():
 	return render_template('index.html')
 
-def feedStream(video,chunksize=10):
+def feedStream(video,chunksize=1000):
 	"""
 	feedStream streams chunks of the video
 	"""
 	with open(video, "rb") as video_file:
-		while True:
+		chunky = True
+		while chunky:
 			chunk = video_file.read(chunksize)
 			if chunk:
 				yield chunk
 			else:
-				break
+				chunky = False
 
 @app.route('/video_feed')
 def video_feed():

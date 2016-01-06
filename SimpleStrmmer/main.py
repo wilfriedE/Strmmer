@@ -1,6 +1,5 @@
 # main.py
 from flask import Flask, render_template, stream_with_context, Response
-import base64
 
 app = Flask(__name__)
 
